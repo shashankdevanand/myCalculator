@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caculator</title>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 10vh auto 0 auto;
+            box-shadow: 0px 0px 13px 10px rgb(123, 23, 23);
+        }
+
+        #display {
+            text-align: right;
+            height: 70px;
+            line-height: 70px;
+            padding: 16px 8px;
+            font-size: 25px;
+            background-color: tomato;
+            color: white;
+            font-size: 58px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            row-gap: 5px;
+            column-gap: 5px;
+            padding: 10px;
+        }
+        .button {
+            line-height: 80px;
+            text-align: center;
+            font-size: 25px;
+            cursor: pointer;
+            background-color: antiquewhite;
+            border-radius: 20px;
+            
+        }
+
+        #clear {
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+        }
+
+        #clear:hover {
+            background-color: rgb(212, 208, 208);
+            color: white;
+        }
+
+        #equal {
+            background-color: rgb(34, 34, 221);
+            color: white;
+        }
+
+        #equal:hover {
+            background-color: rgb(7, 7, 156);
+            color: white;
+        }
+
+        .button:hover {
+            background-color: darkgrey;
+            transition: 0.5s ease-in-out;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="display">
+        </div>
+        <div class="buttons">
+            <div id="clear" class="button">C</div>
+            <div class="button">/</div>
+            <div class="button">*</div>
+            <div class="button">&larr;</div>
+            <div class="button">7</div>
+            <div class="button">8</div>
+            <div class="button">9</div>
+            <div class="button">-</div>
+            <div class="button">4</div>
+            <div class="button">5</div>
+            <div class="button">6</div>
+            <div class="button">+</div>
+            <div class="button">1</div>
+            <div class="button">2</div>
+            <div class="button">3</div>
+            <div class="button">.</div>
+            <div class="button">(</div>
+            <div class="button">0</div>
+            <div class="button">)</div>
+            <div id="equal" class="button">=</div>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById("display")
+        let a = Array.from(document.getElementsByClassName('buttons'))
+        console.log(a)
+        a.map((e) => {
+            e.addEventListener("click", (h) => {
+                console.log(h.target.innerText)
+                switch (h.target.innerText) {
+                    case "C":
+                        display.innerText = ""
+                        break
+                    case "←":
+                        display.innerText = display.innerText.slice(0, -1)
+                        break
+                    case "=":
+                        display.innerText = eval(display.innerText)
+                        break
+                    default:
+                        display.innerText += h.target.innerText
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>
